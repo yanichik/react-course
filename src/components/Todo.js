@@ -29,7 +29,11 @@ function Todo(props) {
 					Delete
 				</button>
 			</div>
-			{isModalOpen && <Modal onClick={closeModal} removeTodo={props.removeItem(props.text)}/>}
+			{isModalOpen && <Modal 
+				onClick={closeModal}
+				removeTodo={props.removeItem}
+				text={props.text}
+			/>}
 			{isModalOpen && <Backdrop onClick={closeModal} />}
 		</div>
 	);

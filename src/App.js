@@ -1,8 +1,7 @@
 import Todo from "./components/Todo";
 function App(props) {
 	function remove(txt) {
-		console.log("Removing");
-		console.log(txt);
+		console.log("Removing " + txt);
 	}
 	return (
 		<div>

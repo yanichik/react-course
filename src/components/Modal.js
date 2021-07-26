@@ -1,8 +1,8 @@
 function Modal(props) {
-  console.log(props)
+  // console.log(props)
   function finalizeDelete() {
     props.onClick();
-    props.removeTodo(props.props.text);
+    props.removeTodo(props.text);
   }
   function doNotDelete() {
     props.onClick();
