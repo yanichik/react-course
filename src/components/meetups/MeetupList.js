@@ -1,6 +1,7 @@
 import MeetupItem from "./MeetupItem.js";
-import classes from './MeetupList.module.css'
+import classes from "./MeetupList.module.css";
 function MeetupList(props) {
+	console.log(props)
 	return (
 		<ol className={classes.list}>
 			{props.meetups.map((meetup) => {

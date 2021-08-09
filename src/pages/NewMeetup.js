@@ -2,8 +2,8 @@ import { useHistory } from "react-router-dom";
 import NewMeetupForm from "../components/meetups/NewMeetupForm.js";
 import Card from "../components/ui/Card.js";
 function NewMeetupPage() {
-	function addMeetupHandler(meetupData) {
-    let history = useHistory();
+  let history = useHistory();
+	function AddMeetupHandler(meetupData) {
 		// send http request using Firebase API to DB
 		// fetch 1st arg: URL to which want to send request
 		// the firebase URL is adaptable - can create table in DB by adding name
@@ -20,14 +20,15 @@ function NewMeetupPage() {
 					"Content-Type": "application/json",
 				}
 			}
-		);
-    
+		).then(()=>{
+      history.replace('/');
+    })
   }
 	return (
 		<div>
 			<h1>Add New Meetup</h1>
 			<Card>
-				<NewMeetupForm onAddMeetup={addMeetupHandler} />
+				<NewMeetupForm onAddMeetup={AddMeetupHandler} />
 			</Card>
 		</div>
 	);
