@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
 
-function ExpenseForm() {
+function ExpenseForm(props) {
 	// preferred way: Multiple states, NOT single state
 	// Multiple States:
 	const [enteredTitle, setEnteredTitle] = useState("");
@@ -63,7 +63,10 @@ function ExpenseForm() {
 			amount: enteredAmount,
 			date: new Date(enteredDate),
 		};
-		console.log(expenseData);
+		// console.log(expenseData);
+    // onSaveExpense is passed in through props from 'NewExpense.js' as function
+    // to define what's to be done once expense is submitted
+    props.onSaveExpense(expenseData);
 
     // resets the states for each of these fields so on re-render they'll be reset
 		setEnteredAmount("");
