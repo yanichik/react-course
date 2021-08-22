@@ -29,15 +29,12 @@ function App() {
 		console.log(expense);
 	}
 
-	function printSelectedYear(year){
-		console.log(year);
-	}
 	return (
 		<div>
 			{/* onAddExpense points to addExpenseHandler, which defines what's to be done in order to 
 			add the user-inputted expense data */}
 			<NewExpense onAddExpense={addExpenseHandler} />
-			<Expenses expenses={expenses} onLiftSelectedYear={printSelectedYear}/>
+			<Expenses expenses={expenses} />
 		</div>
 	);
 }
