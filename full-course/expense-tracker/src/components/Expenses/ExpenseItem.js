@@ -8,9 +8,8 @@ function ExpenseItem(props) {
 	// which is the most important aspect b/c simply changing the value with an = doesn't do that
 	const [title, setTitle] = useState(props.title);
 	function titleHandler() {
-		setTitle('Updated!');
+		setTitle("Updated!");
 	}
-	// console.log('component rendered')
 	return (
 		<Card className="expense-item">
 			<ExpenseDate date={props.date} />
