@@ -74,10 +74,7 @@ function ExpenseForm(props) {
 		setEnteredDate("");
 	}
 
-  function cancelBtnHandler(){
-    setForm(addNewExpenseBtn);
-  }
-	const standardForm = (
+	return (
 		<form onSubmit={submitHandler}>
 			<div className="new-expense__controls">
 				<div className="new-expense__control">
@@ -110,25 +107,12 @@ function ExpenseForm(props) {
 				</div>
 			</div>
 			<div className="new-expense__actions">
-				<button onClick={cancelBtnHandler}>Cancel</button>
+				<button type="button" onClick={props.onCancel}>
+					Cancel
+				</button>
 				<button type="submit">Add Expense</button>
 			</div>
 		</form>
 	);
-
-	function addNewExpenseBtnHandler() {
-		setForm(standardForm);
-	}
-	const addNewExpenseBtn = (
-		<div className="new-expense__actions center">
-			<button type="submit" onClick={addNewExpenseBtnHandler}>
-				Add New Expense
-			</button>
-		</div>
-	);
-
-	const [form, setForm] = useState(addNewExpenseBtn);
-
-	return form;
 }
 export default ExpenseForm;
