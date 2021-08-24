@@ -64,16 +64,20 @@ function ExpenseForm(props) {
 			date: new Date(enteredDate),
 		};
 		// console.log(expenseData);
-    // onSaveExpense is passed in through props from 'NewExpense.js' as function
-    // to define what's to be done once expense is submitted
-    props.onSaveExpense(expenseData);
+		// onSaveExpense is passed in through props from 'NewExpense.js' as function
+		// to define what's to be done once expense is submitted
+		props.onSaveExpense(expenseData);
 
-    // resets the states for each of these fields so on re-render they'll be reset
+		// resets the states for each of these fields so on re-render they'll be reset
 		setEnteredAmount("");
 		setEnteredTitle("");
 		setEnteredDate("");
 	}
-	return (
+
+  function cancelBtnHandler(){
+    setForm(addNewExpenseBtn);
+  }
+	const standardForm = (
 		<form onSubmit={submitHandler}>
 			<div className="new-expense__controls">
 				<div className="new-expense__control">
@@ -106,9 +110,25 @@ function ExpenseForm(props) {
 				</div>
 			</div>
 			<div className="new-expense__actions">
+				<button onClick={cancelBtnHandler}>Cancel</button>
 				<button type="submit">Add Expense</button>
 			</div>
 		</form>
 	);
+
+	function addNewExpenseBtnHandler() {
+		setForm(standardForm);
+	}
+	const addNewExpenseBtn = (
+		<div className="new-expense__actions center">
+			<button type="submit" onClick={addNewExpenseBtnHandler}>
+				Add New Expense
+			</button>
+		</div>
+	);
+
+	const [form, setForm] = useState(addNewExpenseBtn);
+
+	return form;
 }
 export default ExpenseForm;
