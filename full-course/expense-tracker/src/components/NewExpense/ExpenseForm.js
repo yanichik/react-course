@@ -60,10 +60,10 @@ function ExpenseForm(props) {
 		e.preventDefault();
 		const expenseData = {
 			title: enteredTitle,
-			amount: enteredAmount,
+			amount: +enteredAmount,
 			date: new Date(enteredDate),
 		};
-		// console.log(expenseData);
+		console.log(typeof(expenseData.amount));
 		// onSaveExpense is passed in through props from 'NewExpense.js' as function
 		// to define what's to be done once expense is submitted
 		props.onSaveExpense(expenseData);
