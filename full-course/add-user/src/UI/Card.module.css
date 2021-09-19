@@ -1,0 +1,6 @@
+.card {
+	display: inline-block;
+	width: 100vh;
+	border-radius: 4px;
+	box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+}
