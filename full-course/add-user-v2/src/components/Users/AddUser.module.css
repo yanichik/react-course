@@ -1,0 +1,36 @@
+.input {
+  /* 2rem for vertical marging, auto for horizontal margin.
+  'auto' has 2 functional options: 1) take up available space 2) 0px.
+  taking up available space ONLY works for horizontal margins. It will
+  not work for floated, inline, or absolute elements b/c they already 
+  have margins defined, therefore will have 0px value in those instances.
+  auto for top/bottom margins ALWAYS computes to 0px, except in absolute
+  elements.
+  */
+  margin: 2rem auto; 
+  padding: 1rem;
+  width: 90%;
+  max-width: 40rem;
+}
+
+.input label {
+  /* block elements: always stack on top of each other (force new line of content). default to 100% width
+  inline elements: do not stack, but they in line. inline elements cannot accept a height, margin, nor padding. */
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.input input {
+  font: inherit;
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 0.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.input input:focus {
+  outline: none;
+  border-color: black;
+}
