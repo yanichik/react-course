@@ -21,7 +21,7 @@ function Form(props) {
 				<div>
 					<label htmlFor="">
 						Age (Years):
-						<input type="text" name="age" placeholder=''/>
+						<input type="number" name="age" placeholder=''/>
 					</label>
 				</div>
 				<button type="submit">Add User</button>
