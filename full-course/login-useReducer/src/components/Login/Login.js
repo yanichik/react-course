@@ -19,7 +19,10 @@ function passwordReducer(state, action) {
 		case "INPUT":
 			return { value: action.payload, isValid: action.payload.length > 6 };
 		case "INPUT_BLUR":
-			return { value: state.value, isValid: (state.value.length > 6 ? true : false) };
+			return {
+				value: state.value,
+				isValid: state.value.length > 6 ? true : false,
+			};
 		default:
 			return { value: "", isValid: false };
 	}
@@ -50,35 +53,43 @@ const Login = (props) => {
 		};
 	}, []);
 
-	// useEffect(() => {
-	//   const identifier = setTimeout(() => {
-	//     console.log('Checking form validity!');
-	//     setFormIsValid(
-	//       enteredEmail.includes('@') && enteredPassword.trim().length > 6
-	//     );
-	//   }, 500);
+// object destructuring. emailIsValid and passwordIsValid are aliases
+	const { isValid: emailIsValid } = emailState;
+	const { isValid: passwordIsValid } = passwordState;
 
-	//   return () => {
-	//     console.log('CLEANUP');
-	//     clearTimeout(identifier);
-	//   };
-	// }, [enteredEmail, enteredPassword]);
+	useEffect(() => {
+		const identifier = setTimeout(() => {
+			console.log("Checking form validity!");
+			setFormIsValid(
+				emailState.value.includes("@") && passwordState.value.trim().length > 6
+			);
+		}, 500);
+
+		return () => {
+			console.log("CLEANUP");
+			clearTimeout(identifier);
+		};
+    // here passing in the properties of emailState & passwordState that were destructured and 
+    // given aliases in lines 57-58. if we pass in the entire states then useEffect with run
+    // whenever any property of either state with change. But this way, it only runs when either
+    // of these two properties change
+	}, [emailIsValid, passwordIsValid]);
 
 	const emailChangeHandler = (event) => {
 		// setEnteredEmail(event.target.value);
 		dispatchEmail({ type: "INPUT", payload: event.target.value });
 
-		setFormIsValid(
-			emailState.value.includes("@") && passwordState.value.trim().length > 6
-		);
+		// setFormIsValid(
+		// 	emailState.value.includes("@") && passwordState.value.trim().length > 6
+		// );
 	};
 
 	const passwordChangeHandler = (event) => {
 		// setEnteredPassword(event.target.value);
 		dispatchPassword({ type: "INPUT", payload: event.target.value });
-		setFormIsValid(
-			emailState.value.includes("@") && event.target.value.trim().length > 6
-		);
+		// setFormIsValid(
+		// 	emailState.value.includes("@") && event.target.value.trim().length > 6
+		// );
 	};
 
 	const validateEmailHandler = () => {
@@ -87,7 +98,7 @@ const Login = (props) => {
 	};
 
 	const validatePasswordHandler = () => {
-    dispatchPassword({ type: "INPUT_BLUR" });
+		dispatchPassword({ type: "INPUT_BLUR" });
 		// setPasswordIsValid(enteredPassword.trim().length > 6);
 	};
 
