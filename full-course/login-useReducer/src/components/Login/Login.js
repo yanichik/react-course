@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useContext } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
+import AuthContext from "../store/auth-context";
 
 function emailReducer(state, action) {
 	switch (action.type) {
@@ -29,6 +30,7 @@ function passwordReducer(state, action) {
 }
 
 const Login = (props) => {
+	const ctx = useContext(AuthContext);
 	const initialEmailState = { value: "", isValid: false };
 	const initialPasswordState = { value: "", isValid: false };
 	const [emailState, dispatchEmail] = useReducer(
@@ -53,7 +55,7 @@ const Login = (props) => {
 		};
 	}, []);
 
-// object destructuring. emailIsValid and passwordIsValid are aliases
+	// object destructuring. emailIsValid and passwordIsValid are aliases
 	const { isValid: emailIsValid } = emailState;
 	const { isValid: passwordIsValid } = passwordState;
 
@@ -69,10 +71,10 @@ const Login = (props) => {
 			console.log("CLEANUP");
 			clearTimeout(identifier);
 		};
-    // here passing in the properties of emailState & passwordState that were destructured and 
-    // given aliases in lines 57-58. if we pass in the entire states then useEffect with run
-    // whenever any property of either state with change. But this way, it only runs when either
-    // of these two properties change
+		// here passing in the properties of emailState & passwordState that were destructured and
+		// given aliases in lines 57-58. if we pass in the entire states then useEffect with run
+		// whenever any property of either state with change. But this way, it only runs when either
+		// of these two properties change
 	}, [emailIsValid, passwordIsValid]);
 
 	const emailChangeHandler = (event) => {
@@ -101,10 +103,9 @@ const Login = (props) => {
 		dispatchPassword({ type: "INPUT_BLUR" });
 		// setPasswordIsValid(enteredPassword.trim().length > 6);
 	};
-
 	const submitHandler = (event) => {
 		event.preventDefault();
-		props.onLogin(emailState.value, passwordState.value);
+		ctx.onLogin(emailState.value, passwordState.value);
 	};
 
 	return (
