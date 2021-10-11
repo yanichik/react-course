@@ -1,0 +1,31 @@
+.form {
+	margin-top: 15px;
+}
+
+input {
+	display: flex;
+	width: 100%;
+}
+
+label {
+	display: flex;
+	justify-content: flex-start;
+}
+
+button {
+	display: block;
+	width: 100%;
+	margin-top: 5px;
+	background-color: purple;
+	border-color: purple;
+	color: white;
+  font-weight: bold;
+}
+
+.amount,
+.description {
+	/* display: flex; */
+	flex-direction: column;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}

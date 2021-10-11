@@ -1,0 +1,16 @@
+ul {
+  padding: 0 10px;
+	display: flex;
+	justify-content: space-between;
+	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
+	border-right: rgba(255, 0, 0, 0.7) solid 4px;
+  background-color: white;
+}
+
+.ul-revenue{
+  border-right: rgba(0, 170, 0, 0.9) solid 4px;
+}
+
+.ul-expense{
+  border-right: rgba(255, 0, 0, 0.7) solid 4px;
+}

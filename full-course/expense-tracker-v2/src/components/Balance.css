@@ -1,0 +1,43 @@
+.expenses_revenues {
+	display: flex;
+	justify-content: space-evenly;
+	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, .3);
+	text-align: center;
+  background-color: white;
+}
+
+p::first-line {
+	color: black;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+
+
+.balance {
+  display: flex;
+	color: black;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.balance::nth-line(1){
+  color: blue;
+}
+
+.expenses {
+	color: red;
+	font-weight: 600;
+}
+
+.revenues {
+	color: green;
+	font-weight: 600;
+}
+
+.vl {
+	position: relative;
+	margin-top: 10px;
+	border-left: 3px rgba(0, 0, 0, .3) solid;
+	height: 50px;
+}
