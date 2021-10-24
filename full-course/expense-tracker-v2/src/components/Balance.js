@@ -1,8 +1,8 @@
 import "./Balance.css";
 
 function Balance(props) {
-	console.log("Balance: ");
-	console.log(props);
+	// console.log("Balance: ");
+	// console.log(props);
 	return (
 		<>
 			<h3 className='balance'>Balance<br></br>${props.total}</h3>

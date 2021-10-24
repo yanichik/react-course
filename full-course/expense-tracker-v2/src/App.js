@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import NewTransaction from "./components/NewTransaction";
 import History from "./components/History";
@@ -24,21 +24,9 @@ function App() {
 		expenses: 0,
 		revenues: 0,
 	});
-	function newTransactionHandler(newTransaction) {
-		console.log(newTransaction);
-		setTransactions((prev) => {
-			// console.log(newTransaction.amount);
-			return [
-				...prev,
-				{
-					key: Math.random(),
-					amount: parseInt(newTransaction.amount),
-					descr: newTransaction.descr,
-				},
-			];
-		});
+	useEffect(() => {
 		setBalance((prevBal) => {
-			console.log(prevBal);
+			// console.log(prevBal);
 			let len = transactions.length;
 			if (len > 1) {
 				return {
@@ -61,6 +49,21 @@ function App() {
 				return { total: 0, expenses: 0, revenues: 0 };
 			}
 		});
+	}, [transactions]);
+
+	function newTransactionHandler(newTransaction) {
+		// console.log(newTransaction);
+		setTransactions((prev) => {
+			// console.log(newTransaction.amount);
+			return [
+				...prev,
+				{
+					key: Math.random(),
+					amount: parseInt(newTransaction.amount),
+					descr: newTransaction.descr,
+				},
+			];
+		});
 	}
 	return (
 		<>
@@ -74,7 +77,7 @@ function App() {
 				<h3 className="history">History</h3>
 				<hr />
 				<History transactions={transactions} />
-				<h3 className='new-transaction'>Add New Transaction</h3>
+				<h3 className="new-transaction">Add New Transaction</h3>
 				<hr />
 				<NewTransaction
 					onNewTransaction={newTransactionHandler}
