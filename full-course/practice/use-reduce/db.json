@@ -1,0 +1,12 @@
+{
+	"posts": [
+		{
+			"id": 1,
+			"title": "use state hooks"
+		},
+		{
+			"id": 2,
+			"title": "use effect hooks"
+		}
+	]
+}
