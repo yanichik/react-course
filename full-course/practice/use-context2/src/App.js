@@ -10,8 +10,8 @@ function App() {
 		});
 	}
 	return (
-		<ThemeContext.Provider value={{ darkTheme: darkTheme }}>
-			<Theme onSwitchTheme={switchThemeHandler}></Theme>
+		<ThemeContext.Provider value={{ darkTheme: darkTheme, onSwitchTheme: switchThemeHandler}}>
+			<Theme></Theme>
 		</ThemeContext.Provider>
 	);
 }
