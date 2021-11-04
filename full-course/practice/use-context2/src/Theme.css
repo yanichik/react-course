@@ -1,0 +1,16 @@
+/* body,
+html {
+	height: 100%;
+  background: black;
+} */
+.dark {
+	background: black;
+	color: white;
+	height: 100vh;
+}
+
+.light {
+	background: white;
+	color: black;
+	height: 100vh;
+}

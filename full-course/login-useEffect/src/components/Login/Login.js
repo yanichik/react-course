@@ -13,13 +13,19 @@ const Login = (props) => {
 
 	useEffect(() => {
 		const identifier = setTimeout(() => {
+			// setTimeout(() => {
 			console.log("checking validity");
 			setFormIsValid(
 				enteredEmail.includes("@") && enteredPassword.trim().length > 6
 			);
 		}, 500);
+		console.log(identifier);
 		return () => {
 			console.log("cleanup");
+			// This clears the identifier of the previously set timeout
+			// If i keep pressing a key without allowing 500ms to pass,
+			// the identifiers keep getting cleared so the setTimeout does not run UNTIL
+			// 500ms pause between strokes occurs
 			clearTimeout(identifier);
 		};
 	}, [enteredEmail, enteredPassword]);
