@@ -1,0 +1,42 @@
+.header {
+	/* fixes position even when scrolling. additionally it does not push off 
+  other items (in this case the picture below it). instead the picture hides behind it.
+  if position set to relative, the pic gets pushed*/
+	position: fixed;
+	/* top and left - used with position to adjust location of element.
+  only relevant iff position set to anything OTHER THAN static */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 5rem;
+	background-color: #8a2b06;
+	color: white;
+	display: flex;
+	/* justify adjusts on main axis (horizontal axis here) */
+	justify-content: space-between;
+	/* align-items adjusts on cross axis (vertical alignment here) AND fits 
+  container to size of content*/
+	align-items: center;
+	/* align-content: center; */
+	padding: 0 10%;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+	/* z-index of 10 puts the header above the other items (picture in this case).
+  if set to 0, the pic takes front stage and header is hidden */
+	z-index: 10;
+}
+
+/* format on div of the main-image */
+.main-image {
+	width: 100%;
+	height: 25rem;
+	z-index: 0;
+	overflow: hidden;
+}
+
+.main-image img {
+	width: 110%;
+	height: 100%;
+	object-fit: cover;
+  /* rotates and translates the image */
+	transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem);
+}
