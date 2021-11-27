@@ -1,0 +1,35 @@
+.price {
+	margin-top: 0.25rem;
+	font-weight: bold;
+	color: #ad5502;
+	margin-right: 4rem;
+}
+
+.amount {
+	position: static;
+	padding: 0px 7px;
+	border: rgba(0, 0, 0, 0.2) solid 1px;
+	border-radius: 5px;
+	margin-right: 35%;
+}
+
+.buttons {
+	margin: 0;
+}
+
+.button {
+  cursor: pointer;
+	margin: 0 5px;
+	width: 35px;
+	font-weight: bold;
+	color: #8a2b06;
+	border-color: rgba(138, 43, 6, 1);
+	border-width: thin;
+
+	border-radius: 4px;
+}
+
+.item {
+  display: flex;
+	justify-content: space-between;
+}

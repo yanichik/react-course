@@ -36,7 +36,7 @@ function AvailableMeals(props) {
 			key={meal.id}
 			name={meal.name}
 			description={meal.description}
-			price={meal.price}
+			price={+meal.price}
 		/>
 	));
 	return (

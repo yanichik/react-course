@@ -4,6 +4,7 @@ import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 import AuthContext from "../store/auth-context";
+import Input from "../Input/Input";
 
 function emailReducer(state, action) {
 	switch (action.type) {
@@ -75,7 +76,7 @@ const Login = (props) => {
 		// given aliases in lines 57-58. if we pass in the entire states then useEffect with run
 		// whenever any property of either state with change. But this way, it only runs when either
 		// of these two properties change
-	}, [emailIsValid, passwordIsValid]);
+	}, [emailIsValid, passwordIsValid, emailState, passwordState]);
 
 	const emailChangeHandler = (event) => {
 		// setEnteredEmail(event.target.value);
@@ -111,34 +112,24 @@ const Login = (props) => {
 	return (
 		<Card className={classes.login}>
 			<form onSubmit={submitHandler}>
-				<div
-					className={`${classes.control} ${
-						emailState.isValid === false ? classes.invalid : ""
-					}`}
-				>
-					<label htmlFor="email">E-Mail</label>
-					<input
-						type="email"
-						id="email"
-						value={emailState.value}
-						onChange={emailChangeHandler}
-						onBlur={validateEmailHandler}
-					/>
-				</div>
-				<div
-					className={`${classes.control} ${
-						passwordState.isValid === false ? classes.invalid : ""
-					}`}
-				>
-					<label htmlFor="password">Password</label>
-					<input
-						type="password"
-						id="password"
-						value={passwordState.value}
-						onChange={passwordChangeHandler}
-						onBlur={validatePasswordHandler}
-					/>
-				</div>
+				<Input
+					isValid={emailIsValid}
+					id="email"
+					type="email"
+					label="Email"
+					value={emailState.value}
+					onChange={emailChangeHandler}
+					onBlur={validateEmailHandler}
+				/>
+				<Input
+					isValid={passwordIsValid}
+					id="password"
+					type="password"
+					label="Password"
+					value={passwordState.value}
+					onChange={passwordChangeHandler}
+					onBlur={validatePasswordHandler}
+				/>
 				<div className={classes.actions}>
 					<Button type="submit" className={classes.btn} disabled={!formIsValid}>
 						Login

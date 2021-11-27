@@ -1,0 +1,41 @@
+.bg_img {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 300px;
+	width: 100%;
+	background-image: url(../Supplements/meals.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50% 80%;
+	overflow: hidden;
+}
+
+.intro_heading {
+  position: absolute;
+  top: 30%;
+	max-width: 50%;
+	color: white;
+	text-align: center;
+	background-color: darkslategrey;
+	border-radius: 20px;
+}
+/* .bg_img {
+	display: flex;
+  flex-direction: column;
+	align-items: center;
+	height: 300px;
+	width: 100%;
+	background-image: url(../Supplements/meals.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50% 80%;
+	overflow: hidden;
+}
+
+.intro_heading {
+	display: flex;
+	flex-direction: column;
+	max-width: 50%;
+	align-items: center;
+} */
