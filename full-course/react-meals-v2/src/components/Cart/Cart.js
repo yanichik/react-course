@@ -5,8 +5,14 @@ import CartModal from "../UI/CartModal";
 import CartItem from "./CartItem";
 function Cart(props) {
 	const cartCtx = useContext(CartContext);
-	function cartItemAddHandler(item) {}
-	function cartItemRemoveHandler(id) {}
+	function cartItemAddHandler(item) {
+		// add just one at a time. Otherwise just adding 'item' will add the object with
+		// amount of current amount in cart, essentially doubling the amount with each add
+		cartCtx.addItem({ ...item, amount: 1 });
+	}
+	function cartItemRemoveHandler(id) {
+		cartCtx.removeItem(id);
+	}
 	const cartItems = (
 		<ul className={styles["cart-items"]}>
 			{cartCtx.items.map((item) => (
@@ -28,7 +34,7 @@ function Cart(props) {
 				{cartItems}
 				<div className={styles.total}>
 					<span>Total Amount</span>
-					<span>${cartCtx.total.toFixed(2)}</span>
+					<span>${Math.abs(cartCtx.total).toFixed(2)}</span>
 				</div>
 				<div className={styles.actions}>
 					<button className={styles["button--alt"]} onClick={props.onCloseCart}>

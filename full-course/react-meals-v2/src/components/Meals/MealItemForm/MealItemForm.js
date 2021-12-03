@@ -6,7 +6,6 @@ function MealItemForm(props) {
 	const inputAmtRef = useRef();
 	function submitHandler(event) {
 		event.preventDefault();
-		// console.log(inputAmtRef.current.value);
 		const enteredAmount = inputAmtRef.current.value;
 		const enteredAmountNum = +enteredAmount;
 		if (enteredAmountNum > 5 || enteredAmountNum < 1 || !enteredAmount) {
@@ -14,7 +13,6 @@ function MealItemForm(props) {
 			return;
 		}
 		setAmountValid(true);
-		// console.log(event.target[0].value);
 		props.onAddToCart(enteredAmountNum);
 	}
 	return (
