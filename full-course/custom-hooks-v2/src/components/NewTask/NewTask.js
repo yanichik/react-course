@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import useHttp from "../../custom-hooks/useHttp";
 
 import Section from "../UI/Section";
