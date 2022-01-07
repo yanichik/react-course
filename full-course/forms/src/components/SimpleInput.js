@@ -1,8 +1,6 @@
-// import { useState } from "react";
 import useInput from "../hooks/use-input";
 
 const SimpleInput = (props) => {
-
 	const {
 		value: enteredValue,
 		isTouched: enteredValueTouched,
@@ -32,10 +30,6 @@ const SimpleInput = (props) => {
 		event.preventDefault();
 		resetName();
 		resetEmail();
-		// setEnteredEmailTouched(true);
-		// setEnteredEmail("");
-		// setEnteredEmailTouched(false);
-		// 	// inputRef.current.focus();
 	};
 	const classesFunction = (error) => {
 		return error ? "form-control invalid" : "form-control";
@@ -43,10 +37,7 @@ const SimpleInput = (props) => {
 
 	return (
 		<form onSubmit={submitHandler}>
-			<div
-				// className={inputClassesFunction(enteredValueTouched, enteredValueValid)}
-				className={classesFunction(nameHasError)}
-			>
+			<div className={classesFunction(nameHasError)}>
 				<label htmlFor="name">Your Name</label>
 				<input
 					type="text"
@@ -56,12 +47,10 @@ const SimpleInput = (props) => {
 					value={enteredValue}
 				/>
 				{enteredValueTouched && !enteredValueValid && (
-					<p className={"error-text"}>Invalid Entry</p>
+					<p className={"error-text"}>Invalid Name Entry</p>
 				)}
 			</div>
-			<div
-				className={classesFunction(emailHasError)}
-			>
+			<div className={classesFunction(emailHasError)}>
 				<label htmlFor="email">Email</label>
 				<input
 					type="email"
@@ -71,7 +60,7 @@ const SimpleInput = (props) => {
 					value={enteredEmail}
 				/>
 				{enteredEmailTouched && !enteredEmailValid && (
-					<p className={"error-text"}>Invalid Entry</p>
+					<p className={"error-text"}>Invalid Email Entry</p>
 				)}
 			</div>
 			<div className="form-actions">
