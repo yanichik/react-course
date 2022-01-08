@@ -28,6 +28,37 @@ function Cart(props) {
 			))}
 		</ul>
 	);
+	// const sendOrderRequest = async (orderArray) => {
+	const sendOrderRequest = async () => {
+		const sendBody = {
+			total: cartCtx.total,
+			items: cartCtx.items.map((item) => {
+				return {
+					name: item.name,
+					price: item.price,
+					amount: item.amount,
+					subtotal: item.price * item.amount,
+				};
+			}),
+		};
+		console.log(sendBody);
+		const configUrl =
+			"https://react-http-104c4-default-rtdb.firebaseio.com/cart.json";
+		const configObject = {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			// body: JSON.stringify({ text: "abc" }),
+			body: JSON.stringify(sendBody),
+		};
+		// const rsvp = await fetch(configUrl, configObject);
+		await fetch(configUrl, configObject);
+	};
+
+	const cartSubmitHandler = (event) => {
+		event.preventDefault();
+		console.log(cartCtx);
+		sendOrderRequest();
+	};
 	return (
 		<div>
 			<CartModal onCloseCart={props.onCloseCart}>
@@ -40,7 +71,9 @@ function Cart(props) {
 					<button className={styles["button--alt"]} onClick={props.onCloseCart}>
 						Close
 					</button>
-					<button className={styles["button"]}>Order</button>
+					<form onSubmit={cartSubmitHandler}>
+						<button className={styles["button"]}>Order</button>
+					</form>
 				</div>
 			</CartModal>
 		</div>

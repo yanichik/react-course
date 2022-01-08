@@ -13,6 +13,8 @@ function AvailableMeals(props) {
 			);
 			// cannot call on the same promise twice. the 2nd call will respond with "body has already been consumed"
 			// console.log(await rsvp.json());
+			
+			// json() method returns promise which resolves by parsing body as JSON
 			const menu = await rsvp.json();
 			// console.log(menu);
 			let mealsArray = [];
