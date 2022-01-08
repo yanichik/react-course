@@ -2,6 +2,8 @@ import Card from "../UI/Card";
 import styles from "./AvailableMeals.module.css";
 import MealItem from "./MealItem/MealItem";
 import Cart from "../Cart/Cart";
+import { useEffect, useCallback } from "react";
+
 const mealsArray = [
 	{
 		id: 1,
@@ -30,6 +32,21 @@ const mealsArray = [
 ];
 
 function AvailableMeals(props) {
+	const fetchMenu = useCallback(async () => {
+		try {
+			const menu = await fetch(
+				"https://react-http-104c4-default-rtdb.firebaseio.com/menu.json"
+			);
+			console.log(menu.json());
+		} catch (error) {
+			console.log(error);
+		}
+	}, []);
+
+	useEffect(() => {
+		fetchMenu();
+	}, [fetchMenu]);
+
 	const meals = mealsArray.map((meal) => (
 		<MealItem
 			id={meal.id}

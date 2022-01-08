@@ -24,7 +24,7 @@ function HeaderCartButton(props) {
 		//set timeout to turn off bump after 300ms, since that is the time length of the bump itself
 		const timer = setTimeout(() => setActivateBump(false), 300);
 		// cleanup function to clear timeout
-		// return () => clearTimeout(timer);
+		return () => clearTimeout(timer);
 		// useEffect activated ONLY when cartCtx changes, which occurs with additions/subtractions
 		// to cart
 	}, [cartCtx]);
