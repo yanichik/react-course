@@ -1,0 +1,26 @@
+.meals {
+  max-width: 60rem;
+  width: 90%;
+  /* margin: y-dir down page, x-dir right page */
+  margin: 2rem auto;
+  /* meals-appear defined below, animation time */
+  animation: meals-appear 1s ease-out forwards;
+}
+
+.meals ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes meals-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem) translateX(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
