@@ -1,44 +1,7 @@
 // import { createStore } from "redux";
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-const initialCounterState = { counter: 0, toggle: true };
-const counterSlice = createSlice({
-	name: "counter",
-	// "initialState" MUST BE used. In fact: name, initialState, reducers MUST BE used
-	initialState: initialCounterState,
-	// in regular reducer, it would be WRONG to directly manipulate state, but here we
-	// can manipulate "directly" instead of overwriting the entire state, b/c when using
-	// slices, the backend actually overwrites instead of directly manipulating
-	reducers: {
-		increment(state) {
-			state.counter++;
-		},
-		decrement(state) {
-			state.counter--;
-		},
-		increase(state, action) {
-			// when using configureStore, MUST use action.payload for payload. CANNOT name anything else
-			state.counter = state.counter + action.payload;
-		},
-		toggle(state) {
-			state.toggle = !state.toggle;
-		},
-	},
-});
-
-const initialAuthState = { isAuth: false };
-const authSlice = createSlice({
-	name: "authentication",
-	initialState: initialAuthState,
-	reducers: {
-		login(state) {
-			state.isAuth = true;
-		},
-		logout(state) {
-			state.isAuth = false;
-		},
-	},
-});
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "./authReducer";
+import counterReducer from "./counterReducer";
 
 // const counterReducer = (state = defaultState, action) => {
 // 	if (action.type === "increment") {
@@ -70,10 +33,8 @@ const store = configureStore({
 	// reducer: counterSlice.reducer,
 	// option 2 is to create an object where you can name multiple reducers
 	reducer: {
-		counter: counterSlice.reducer,
-		auth: authSlice.reducer,
+		counter: counterReducer,
+		auth: authReducer,
 	},
 });
-export const counterActions = counterSlice.actions;
-export const authActions = authSlice.actions;
 export default store;
