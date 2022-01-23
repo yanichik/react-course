@@ -8,12 +8,10 @@ const Cart = (props) => {
 	return (
 		<Card className={classes.cart}>
 			<h2>Your Shopping Cart</h2>
-			{cartItems &&
-				cartItems.map((item) => (
-					<ul>
-						<CartItem item={item} key={item.id} />
-					</ul>
-				))}
+			<ul>
+				{cartItems &&
+					cartItems.map((item) => <CartItem key={item.id} item={item} />)}
+			</ul>
 		</Card>
 	);
 };

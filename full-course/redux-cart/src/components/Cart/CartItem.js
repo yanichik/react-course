@@ -14,9 +14,9 @@ const CartItem = (props) => {
 	const minusItemHandler = () => {
 		if (props.item.quantity === 1) {
 			dispatch(cartActions.subtractOneFromItem(props.item.id));
-			console.log("removing item - pre: " + allItems[0].quantity);
+			// console.log("removing item - pre: " + allItems[0].quantity);
 			dispatch(cartActions.removeItem(props.item.id));
-			console.log("removing item - post: " + allItems[0].quantity);
+			// console.log("removing item - post: " + allItems[0].quantity);
 		} else {
 			dispatch(cartActions.subtractOneFromItem(props.item.id));
 		}
