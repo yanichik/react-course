@@ -8,7 +8,7 @@ import MainNavigation from "./components/layout/MainNavigation";
 function App() {
 	const [quotes, setQuotes] = useState([]);
 	const [isSubmitted, setIsSubmmitted] = useState(false);
-	const history = useHistory();
+	const history = useHistory(); // access to URL history and allows to make changes
 
 	const addQuoteHandler = (quote) => {
 		// setIsSubmmitted((prevIsSubmitted) => true);
