@@ -11,7 +11,7 @@ const MainNavigation = () => {
 							<Link to="/quotes">All Quotes</Link>
 						</li>
 						<li>
-							<Link to="add-quote">Add a Quote</Link>
+							<Link to="/add-quote">Add a Quote</Link>
 						</li>
 					</ul>
 				</nav>
