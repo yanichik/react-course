@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
+import { AuthContext } from "../../store/auth-context";
 
 import classes from "./AuthForm.module.css";
 
@@ -10,6 +11,8 @@ const AuthForm = () => {
 	const switchAuthModeHandler = () => {
 		setIsLogin((prevState) => !prevState);
 	};
+	const authCtx = useContext(AuthContext);
+	console.log(authCtx.token);
 
 	const submitHandler = (event) => {
 		event.preventDefault();
@@ -40,7 +43,11 @@ const AuthForm = () => {
 			.then((res) => {
 				setIsLoading(false);
 				if (res.ok) {
-					res.json().then((data) => console.log(data));
+					res.json().then((data) => {
+						// console.log(data.idToken);
+						authCtx.login(data.idToken);
+					});
+					console.log("logging in");
 				} else {
 					// can throw error as option
 					// res.json() return promise. using then to catch the data
@@ -58,7 +65,7 @@ const AuthForm = () => {
 				console.log(err);
 			});
 	};
-
+	console.log(authCtx.isLoggedIn);
 	return (
 		<section className={classes.auth}>
 			<h1>{isLogin ? "Login" : "Sign Up"}</h1>
