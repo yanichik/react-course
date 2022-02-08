@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-// default context format
+// default context format. here don't really need to 
+// define the shape but doing it ONLY for better auto-completion
+// inside VS. the actual default/initialization occurs below
+// inside 'defaultContextValue'
 export const AuthContext = React.createContext({
 	token: "",
 	isLoggedIn: false,
