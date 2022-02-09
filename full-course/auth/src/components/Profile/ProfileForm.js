@@ -1,10 +1,12 @@
 import classes from "./ProfileForm.module.css";
 import { useRef, useContext } from "react";
 import { AuthContext } from "../../store/auth-context";
+import { useHistory } from "react-router-dom";
 
 const ProfileForm = () => {
 	const authCtx = useContext(AuthContext);
 	const newPasswordRef = useRef();
+	const history = useHistory();
 	const submitHandler = (event) => {
 		event.preventDefault();
 		const enteredPassword = newPasswordRef.current.value;
@@ -19,7 +21,9 @@ const ProfileForm = () => {
 				}),
 				headers: { "Content-type": "application/json" },
 			}
-		).then((res) => {});
+		).then((res) => {
+			history.push("/");
+		});
 	};
 	return (
 		<form className={classes.form} onSubmit={submitHandler}>
