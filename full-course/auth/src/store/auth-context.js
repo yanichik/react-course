@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-// default context format. here don't really need to 
+// default context format. here don't really need to
 // define the shape but doing it ONLY for better auto-completion
 // inside VS. the actual default/initialization occurs below
 // inside 'defaultContextValue'
@@ -12,15 +12,18 @@ export const AuthContext = React.createContext({
 });
 
 const AuthProvider = (props) => {
-	const [token, setToken] = useState(null);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const initialToken = localStorage.getItem("token");
+	const [token, setToken] = useState(initialToken);
+	const [isLoggedIn, setIsLoggedIn] = useState(token ? true : false);
 	const loginHandler = (myToken) => {
 		console.log("login handler");
 		setToken(myToken);
+		localStorage.setItem("token", myToken);
 		setIsLoggedIn(true);
 	};
 	const logoutHandler = () => {
 		setToken(null);
+		localStorage.removeItem("token");
 		setIsLoggedIn(false);
 	};
 	const defaultContextValue = {
