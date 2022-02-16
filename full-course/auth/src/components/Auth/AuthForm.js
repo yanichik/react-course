@@ -14,7 +14,7 @@ const AuthForm = () => {
 	};
 	const authCtx = useContext(AuthContext);
 	const history = useHistory();
-	console.log(authCtx.token);
+	// console.log(authCtx.token);
 
 	const submitHandler = (event) => {
 		event.preventDefault();
@@ -46,11 +46,18 @@ const AuthForm = () => {
 				setIsLoading(false);
 				if (res.ok) {
 					res.json().then((data) => {
-						// console.log(data.idToken);
-						authCtx.login(data.idToken);
+						// console.log(
+						// 	+data.expiresIn + " is of type: " + typeof +data.expiresIn
+						// );
+						const expirationTime = new Date(
+							new Date().getTime() + +data.expiresIn * 1000
+							// new Date().getTime() + 3 * 1000
+						);
+						// in login, expecting a time stamp to set the experation time
+						authCtx.login(data.idToken, expirationTime);
 						history.replace("/");
 					});
-					console.log("logging in");
+					// console.log("logging in");
 				} else {
 					// can throw error as option
 					// res.json() return promise. using then to catch the data
@@ -65,10 +72,10 @@ const AuthForm = () => {
 				}
 			})
 			.catch((err) => {
-				console.log(err);
+				// console.log(err);
 			});
 	};
-	console.log(authCtx.isLoggedIn);
+	// console.log("isLoggedIn: " + authCtx.isLoggedIn);
 	return (
 		<section className={classes.auth}>
 			<h1>{isLogin ? "Login" : "Sign Up"}</h1>
